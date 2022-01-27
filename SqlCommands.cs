@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace project1_Parser
+﻿namespace project1_Parser
 {
     public class sqlcomands
     {

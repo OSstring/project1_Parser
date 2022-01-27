@@ -29,8 +29,8 @@ namespace project1_Parser
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@ namespace project1_Parser
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(824, 2602);
+            this.button2.Location = new System.Drawing.Point(803, 2666);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 30);
             this.button2.TabIndex = 1;
@@ -92,7 +92,7 @@ namespace project1_Parser
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(279, 17);
+            this.label1.Size = new System.Drawing.Size(269, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "1. Выберите путь для сохранения файла";
             // 
@@ -115,7 +115,7 @@ namespace project1_Parser
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 17);
+            this.label2.Size = new System.Drawing.Size(146, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "2. Выберите кафедру";
             // 
@@ -135,7 +135,7 @@ namespace project1_Parser
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 214);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(310, 17);
+            this.label3.Size = new System.Drawing.Size(299, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "3. График для комиссии или преподавателя?";
             // 
@@ -158,7 +158,7 @@ namespace project1_Parser
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(363, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(204, 17);
+            this.label4.Size = new System.Drawing.Size(199, 16);
             this.label4.TabIndex = 8;
             this.label4.Text = "4. Выберите преподавателей";
             // 
@@ -175,7 +175,7 @@ namespace project1_Parser
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(363, 152);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(249, 17);
+            this.label5.Size = new System.Drawing.Size(240, 16);
             this.label5.TabIndex = 11;
             this.label5.Text = "5. Выберите дату и запишите время";
             // 
@@ -184,7 +184,7 @@ namespace project1_Parser
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(363, 197);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(156, 17);
+            this.label6.Size = new System.Drawing.Size(152, 16);
             this.label6.TabIndex = 12;
             this.label6.Text = "6. Укажите аудиторию";
             // 
@@ -205,7 +205,7 @@ namespace project1_Parser
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label7.Location = new System.Drawing.Point(16, 186);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(224, 19);
+            this.label7.Size = new System.Drawing.Size(220, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Составление описания таблицы";
             // 
@@ -227,7 +227,7 @@ namespace project1_Parser
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label11.Location = new System.Drawing.Point(16, 13);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(217, 19);
+            this.label11.Size = new System.Drawing.Size(212, 18);
             this.label11.TabIndex = 23;
             this.label11.Text = "Оформление шапки документа";
             // 
@@ -239,7 +239,7 @@ namespace project1_Parser
             this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label12.Location = new System.Drawing.Point(729, 13);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(240, 19);
+            this.label12.Size = new System.Drawing.Size(235, 18);
             this.label12.TabIndex = 24;
             this.label12.Text = "Заполнение таблицы содержимым\r\n";
             // 
@@ -267,16 +267,16 @@ namespace project1_Parser
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkBoxDataGridView,
@@ -310,7 +310,7 @@ namespace project1_Parser
             this.checkBoxDataGridView.MinimumWidth = 6;
             this.checkBoxDataGridView.Name = "checkBoxDataGridView";
             this.checkBoxDataGridView.TrueValue = "";
-            this.checkBoxDataGridView.Width = 72;
+            this.checkBoxDataGridView.Width = 70;
             // 
             // groupname
             // 
@@ -320,7 +320,7 @@ namespace project1_Parser
             this.groupname.HeaderText = "Группа";
             this.groupname.MinimumWidth = 6;
             this.groupname.Name = "groupname";
-            this.groupname.Width = 85;
+            this.groupname.Width = 84;
             // 
             // FIOstudent
             // 
@@ -330,7 +330,7 @@ namespace project1_Parser
             this.FIOstudent.HeaderText = "ФИО студента";
             this.FIOstudent.MinimumWidth = 6;
             this.FIOstudent.Name = "FIOstudent";
-            this.FIOstudent.Width = 136;
+            this.FIOstudent.Width = 132;
             // 
             // semestr
             // 
@@ -340,7 +340,7 @@ namespace project1_Parser
             this.semestr.HeaderText = "Семестр";
             this.semestr.MinimumWidth = 6;
             this.semestr.Name = "semestr";
-            this.semestr.Width = 94;
+            this.semestr.Width = 93;
             // 
             // polugodie
             // 
@@ -350,7 +350,7 @@ namespace project1_Parser
             this.polugodie.HeaderText = "Полугодие";
             this.polugodie.MinimumWidth = 6;
             this.polugodie.Name = "polugodie";
-            this.polugodie.Width = 108;
+            this.polugodie.Width = 109;
             // 
             // predmet
             // 
@@ -360,7 +360,7 @@ namespace project1_Parser
             this.predmet.HeaderText = "Предмет";
             this.predmet.MinimumWidth = 6;
             this.predmet.Name = "predmet";
-            this.predmet.Width = 96;
+            this.predmet.Width = 95;
             // 
             // Institut
             // 
@@ -370,7 +370,7 @@ namespace project1_Parser
             this.Institut.HeaderText = "Институт/Факультет";
             this.Institut.MinimumWidth = 6;
             this.Institut.Name = "Institut";
-            this.Institut.Width = 175;
+            this.Institut.Width = 174;
             // 
             // tipkontrolya
             // 
@@ -380,23 +380,23 @@ namespace project1_Parser
             this.tipkontrolya.HeaderText = "Тип контроля";
             this.tipkontrolya.MinimumWidth = 6;
             this.tipkontrolya.Name = "tipkontrolya";
-            this.tipkontrolya.Width = 129;
+            this.tipkontrolya.Width = 126;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(726, 41);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(134, 17);
+            this.label8.Size = new System.Drawing.Size(131, 16);
             this.label8.TabIndex = 30;
             this.label8.Text = "Выберите предмет";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(823, 308);
+            this.label9.Location = new System.Drawing.Point(811, 308);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(310, 17);
+            this.label9.Size = new System.Drawing.Size(306, 16);
             this.label9.TabIndex = 31;
             this.label9.Text = "Выберите всех студентов и нажмите \"Готово\"";
             // 
@@ -440,7 +440,7 @@ namespace project1_Parser
             this.Controls.Add(this.button1);
             this.HelpButton = true;
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Создание графика";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

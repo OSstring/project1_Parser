@@ -10,20 +10,8 @@ namespace project1_Parser
 {
     public partial class Form1 : Form
     {
-        /*List<string> group = new List<string> { };
-        List<string> student = new List<string> { };
-        List<string> semestr = new List<string> { };
-        List<string> semiannual = new List<string> { };
-        List<string> lesson = new List<string> { };
-        List<string> typeOfControl = new List<string> { };
-        List<string> departament = new List<string> { };*/
         int countOfRow = 1;
-        //преобразуем список в массив
-        //int[] numbers2 = numbers.ToArray<int>();
-        
-
-
-
+       
         public Form1()
         {
             Program.f1 = this;
@@ -34,9 +22,8 @@ namespace project1_Parser
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
-        //INSERT INTO name_group FROM[groups] VALUES()
 
         private void ФайлToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -58,7 +45,6 @@ namespace project1_Parser
                 while (await sqlReader.ReadAsync())
                 {
                     dataGridView1.Rows.Add(Convert.ToString(sqlReader["name_groups"]), Convert.ToString(sqlReader["name_students"]), Convert.ToString(sqlReader["numberOfSemestr"]),  Convert.ToString(sqlReader["semiannual"]), Convert.ToString(sqlReader["lesson"]), Convert.ToString(sqlReader["departament"]), Convert.ToString(sqlReader["typeOfControl"]));
-                    
                 }
             }
             catch (Exception ex)
@@ -70,6 +56,33 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
+            }
+        }
+
+        async void DeleteFromTable()
+        {
+            SqlCommand commandSelect = new SqlCommand("DELETE FROM arrears;", Program.sqlConnection);
+            SqlDataReader sqlReader = null;
+            try
+            {
+                sqlReader = await commandSelect.ExecuteReaderAsync();
+
+                while (await sqlReader.ReadAsync())
+                {
+                    await commandSelect.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (sqlReader != null)
+                    sqlReader.Close();
+                Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -96,6 +109,7 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -123,6 +137,7 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -131,9 +146,6 @@ namespace project1_Parser
             Program.Connect();
             await Program.sqlConnection.OpenAsync();
             SqlCommand commandSelect = new SqlCommand($"INSERT INTO [arrears]  VALUES( N'{name_group}', N'{name_student}', N'{numberOfSemestr}', N'{semiannual}', N'{lesson}', N'{departament}', N'{typeOfControl}')", Program.sqlConnection);
-            //commandSelect.Parameters.AddWithValue("name_group", name_group);
-            //commandSelect.Parameters.AddWithValue("name_students", name_student);(name_groups, name_students, numberOfSemestr, semiannual, departament, typeOfControl)
-            //commandSelect.Parameters.AddWithValue("lesson", lesson);
             SqlDataReader sqlReader = null;
             try
             {
@@ -153,6 +165,7 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -179,6 +192,7 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -198,6 +212,7 @@ namespace project1_Parser
             finally
             {
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -206,20 +221,7 @@ namespace project1_Parser
             string id_department;
             SqlCommand command1 = new SqlCommand($"SELECT [id_department] FROM [departments] WHERE [name_department] = N'{name_department}'", Program.sqlConnection);
             command1.Parameters.AddWithValue("name_department", name_department);
-            //SqlDataReader sqlReader = command1.ExecuteReader();
-            //while (sqlReader.Read())
-            //{
-                //string id_department = Convert.ToString(sqlReader["id_department"]);
-            //    id_department = sqlReader.ToString();
-                
-            //}
             id_department = Convert.ToString(command1.ExecuteScalar());
-            //sqlReader.Close();
-           // MessageBox.Show(id_department.ToString());
-            
-
-            
-            
             return id_department;
         }
 
@@ -240,13 +242,13 @@ namespace project1_Parser
             finally
             {
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
         void TeacherDelete(string id_department, string name_teacher)
         {
             SqlCommand command2 = new SqlCommand($"DELETE FROM [teachers] WHERE [name_teachers] = N'{name_teacher}' AND [id_department] = N'{id_department}'", Program.sqlConnection);
-            //DELETE FROM[departments] WHERE[name_department] = N'{name_department}'
             command2.Parameters.AddWithValue("name_teacher", name_teacher);
             command2.Parameters.AddWithValue("id_department", id_department);
 
@@ -261,13 +263,13 @@ namespace project1_Parser
             finally
             {
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
         void TeacherDeleteWithDepartment(string id_department)
         {
             SqlCommand command1 = new SqlCommand($"DELETE FROM [teachers] WHERE [id_department] = N'{id_department}'", Program.sqlConnection);
-            //DELETE FROM[departments] WHERE[name_department] = N'{name_department}'
             command1.Parameters.AddWithValue("id_department", id_department);
 
             try
@@ -281,6 +283,7 @@ namespace project1_Parser
             finally
             {
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -330,13 +333,13 @@ namespace project1_Parser
                 if (sqlReader1 != null)
                     sqlReader1.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
         void FillingComboDepartmens()
         {
             SqlCommand commandSelect = new SqlCommand($"SELECT [name_department] FROM [departments] ORDER BY [name_department]", Program.sqlConnection);
-            //SqlCommand commandSelect = new SqlCommand($"SELECT [name_teachers] FROM [teachers] ORDER BY [name_teachers]", Program.sqlConnection);
             SqlDataReader sqlReader = null;
             try
             {
@@ -358,12 +361,12 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
         void FillingComboTeachers(string id_department)
         {
-            //SqlCommand commandSelect = new SqlCommand($"SELECT [name_department] FROM [departments] ORDER BY [name_department]", Program.sqlConnection);
             SqlCommand commandSelect = new SqlCommand($"SELECT [name_teachers] FROM [teachers] WHERE [id_department] = N'{id_department}' ORDER BY [name_teachers]", Program.sqlConnection);
             commandSelect.Parameters.AddWithValue("id_department", id_department);
             SqlDataReader sqlReader = null;
@@ -385,6 +388,7 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -410,8 +414,6 @@ namespace project1_Parser
                     {
                         comboBox1.Items.Add(Convert.ToString(sqlReader["name_students"]));
                     }
-                   // if ( && comboBox1.Items[comboBox1.Items.Count].ToString() != "")
-                        
                 }
             }
             catch (Exception ex)
@@ -423,6 +425,7 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -447,7 +450,6 @@ namespace project1_Parser
                     {
                         comboBox1.Items.Add(Convert.ToString(sqlReader["name_students"]));
                     }
-                    // if ( && comboBox1.Items[comboBox1.Items.Count].ToString() != "")
 
                 }
             }
@@ -460,6 +462,7 @@ namespace project1_Parser
                 if (sqlReader != null)
                     sqlReader.Close();
                 Program.sqlConnection.Close();
+                Program.connected = false;
             }
         }
 
@@ -468,8 +471,6 @@ namespace project1_Parser
             
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-
-                //this.Text = openFileDialog1.FileName;
                 var workbook = new XLWorkbook(openFileDialog1.FileName);
                 _WorkSheet = workbook.Worksheet(1);
 
@@ -482,7 +483,6 @@ namespace project1_Parser
 
                     SqlCommand command = new SqlCommand("INSERT INTO [arrears] ([name_groups], [name_students], [numberOfSemestr], [semiannual], [lesson], [departament], [typeOfControl]) VALUES(@name_groups, @name_students, @numberOfSemestr, @semiannual, @lesson, @departament, @typeOfControl)", Program.sqlConnection);
                     
-
                     command.Parameters.AddWithValue("name_groups",_WorkSheet.Cell(countOfRow, 1).Value.ToString().TrimEnd());
                     command.Parameters.AddWithValue("name_students", _WorkSheet.Cell(countOfRow, 2).Value.ToString().TrimEnd());
                     command.Parameters.AddWithValue("numberOfSemestr", _WorkSheet.Cell(countOfRow, 3).Value.ToString().TrimEnd());
@@ -494,40 +494,15 @@ namespace project1_Parser
                     string proverka = _WorkSheet.Cell(countOfRow, 2).Value.ToString(); 
                     if (proverka != _WorkSheet.Cell(countOfRow + 1, 2).Value.ToString() && !_WorkSheet.Cell(countOfRow, 1).IsEmpty())
                         comboBox1.Items.Add(_WorkSheet.Cell(countOfRow, 2).Value.ToString().TrimEnd());
-                    
-                        
-                    /*proverka = _WorkSheet.Cell(countOfRow, 5).Value.ToString();
-                    if (proverka != _WorkSheet.Cell(countOfRow + 1, 5).Value.ToString() && !_WorkSheet.Cell(countOfRow, 1).IsEmpty())
-                        comboBox2.Items.Add(_WorkSheet.Cell(countOfRow, 5).Value.ToString().TrimEnd());*/
                     if (!_WorkSheet.Cell(countOfRow, 1).IsEmpty())
                     {
                         await command.ExecuteNonQueryAsync();
                     }
                 }
-
-                
                 UpdateTable();
-                
-
-
             }
-
-
         }
         
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            /*comboBox1.Items.Clear();
-            comboBox1.Text = "";
-            comboBox2.Items.Clear();
-            comboBox2.Text = "";
-            await Program.sqlConnection.OpenAsync();
-            SqlCommand command = new SqlCommand("TRUNCATE TABLE arrears;", Program.sqlConnection);
-            command.ExecuteNonQuery();
-            UpdateTable();
-            button1.Enabled = false;*/
-        }
-
         private void OpenFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
@@ -705,9 +680,12 @@ namespace project1_Parser
 
         private async void tabPage1_Enter(object sender, EventArgs e)
         {
-            Program.Connect();
-            await Program.sqlConnection.OpenAsync();
-            UpdateTable();
+            if (!Program.connected) 
+            {
+                Program.Connect();
+                await Program.sqlConnection.OpenAsync();
+                UpdateTable();
+            } 
         }
 
         private void tabPage3_Enter(object sender, EventArgs e)
@@ -731,6 +709,26 @@ namespace project1_Parser
             {
                 textBox10.Text = "";
             }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                видToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                видToolStripMenuItem.Visible = false;
+            }
+        }
+
+        private void очиститьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.sqlConnection.OpenAsync();
+            DeleteFromTable();
+            Program.sqlConnection.OpenAsync();
+            UpdateTable();
         }
     }
 }

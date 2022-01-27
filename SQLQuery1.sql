@@ -1,1 +1,1 @@
-﻿TRUNCATE TABLE arrears;
+﻿DELETE FROM arrears;

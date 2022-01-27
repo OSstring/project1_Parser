@@ -50,8 +50,6 @@ namespace project1_Parser
                     {
                         comboBox1.Items.Add(Convert.ToString(sqlReader["name_students"]));
                     }
-                    // if ( && comboBox1.Items[comboBox1.Items.Count].ToString() != "")
-
                 }
             }
             catch (Exception ex)
@@ -171,24 +169,6 @@ namespace project1_Parser
                 }
                 
             }
-            //chart1.ChartAreas[0].AxisY.Interval = 10;
-
-            /*foreach (var r in chart1.Series[0].Points)
-            {
-                r.Label += r.YValues.ToString();
-            }
-
-            foreach (var r in Data1)
-            {
-                this.chart1.Series[0].Points.AddXY(r.Key, r.Value);
-            }
-
-            foreach (var r in Data)
-            {
-                this.chart1.Series[0].Points.AddXY(r.Key, r.Value);
-            }*/
-
-
         }
 
         private double Countforchart(string str)
@@ -287,97 +267,7 @@ namespace project1_Parser
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            /*chart1.Series.Clear();
-            //var masX = new List<string>();
-            //double[] masY = new double[100];
 
-            Data.Clear();
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-            {
-                if (Convert.ToBoolean(checkedListBox1.GetItemCheckState(i)))
-                {
-                    Data.Add(checkedListBox1.SelectedItem.ToString(), 10.0);
-                }
-                //chart1.Series[0].Points[i].XValue = checkedListBox1.SelectedValue.ToString(); 
-                //chart1.Series[0].Points.AddXY(checkedListBox1.SelectedItem.ToString(), 10.0); ;
-
-                if (checkedListBox1.CheckedIndices.Contains(i))
-                {
-                    
-                    //masX.Add(checkedListBox1.Items[i].ToString());
-                    //masY[0] = 10;
-                    //this.chart1.Series[0].Points.AddXY(checkedListBox1.Items[i].ToString(), 10);
-                    //chart1.Series[0].Points[0].XValue = ;
-                    //chart1.Series[0].Points.AddXY(checkedListBox1.Items[i].ToString(), 10);
-                    //chart1.Series[0].Points[1].YValues.SetValue(20, 0);   checkedListBox1.SelectedItem.ToString()
-                    //chart1.Series[0].Points[0].Label = checkedListBox1.SelectedItem.ToString();   checkedListBox1.SelectedValue.ToString()
-
-                    //ChartFill(comboBox1.SelectedIndex , checkedListBox1.Items[i].ToString());
-                    /*if (chart1.Series[0].Points.Count > 0)
-            {
-                chart1.Series[0].Points.Clear();
-            }*/
-                    
-                    //chart1.Series[0].Points.DataBindXY(data.Keys, data.Values);
-                    //this.chart1.Series[0].Points.DataBindXY(masY, masY);
-                /*}
-                
-                foreach (var r in Data)
-                {
-                    this.chart1.Series[0].Points.AddXY(r.Key, r.Value); ;
-                }
-            }*/
         }
-
-
-        /*void ChartFill(int comboBoxIndex, string VariableOfCheckedListBoxSelectedIndex)
-        {
-            
-            string comandText = "";
-            string temp = "";
-            switch (comboBoxIndex)
-            {
-                case 0:
-                    chart1.ChartAreas[0]. (comboBox1.Text);
-                    comandText = $"SELECT [name_groups] FROM [arrears] WHERE [numberOFSemestr] = N'{numberOFSemestr}'";
-                    temp = "name_groups";
-                    break;
-                case 1:
-                    comandText = $"SELECT [lesson] FROM [arrears] WHERE [numberOFSemestr] = N'{numberOFSemestr}'";
-                    temp = "lesson";
-                    break;
-                case 2:
-                    comandText = $"SELECT [departament] FROM [arrears] WHERE [numberOFSemestr] = N'{numberOFSemestr}'";
-                    temp = "departament";
-                    break;
-            }
-
-
-            Program.Connect();
-            Program.sqlConnection.Open();
-            SqlCommand commandSelect = new SqlCommand($"SELECT * FROM [arrears] WHERE [lesson] = N'{VariableOfCheckedListBoxSelectedIndex}'", Program.sqlConnection);
-            commandSelect.Parameters.AddWithValue("lesson", VariableOfCheckedListBoxSelectedIndex);
-            SqlDataReader sqlReader = null;
-            try
-            {
-                sqlReader = commandSelect.ExecuteReader();
-                while (sqlReader.Read())
-                {
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (sqlReader != null)
-                    sqlReader.Close();
-            }
-            Program.sqlConnection.Close();
-        }*/
-
     }
 }

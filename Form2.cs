@@ -42,20 +42,9 @@ namespace project1_Parser
             string id_department;
             SqlCommand command1 = new SqlCommand($"SELECT [id_department] FROM [departments] WHERE [full_name_department] = N'{full_name_department}'", Program.sqlConnection);
             command1.Parameters.AddWithValue("full_name_department", full_name_department);
-            //SqlDataReader sqlReader = command1.ExecuteReader();
-            //while (sqlReader.Read())
-            //{
-            //string id_department = Convert.ToString(sqlReader["id_department"]);
-            //    id_department = sqlReader.ToString();
-
-            //}
+            
             id_department = Convert.ToString(command1.ExecuteScalar());
-            //sqlReader.Close();
-            // MessageBox.Show(id_department.ToString());
-
-
-
-
+            
             return id_department;
         }
 
@@ -64,26 +53,14 @@ namespace project1_Parser
             string fn_department;
             SqlCommand command1 = new SqlCommand($"SELECT [name_department] FROM [departments] WHERE [full_name_department] = N'{full_name_department}'", Program.sqlConnection);
             command1.Parameters.AddWithValue("full_name_department", full_name_department);
-            //SqlDataReader sqlReader = command1.ExecuteReader();
-            //while (sqlReader.Read())
-            //{
-            //string id_department = Convert.ToString(sqlReader["id_department"]);
-            //    id_department = sqlReader.ToString();
-
-            //}
+            
             fn_department = Convert.ToString(command1.ExecuteScalar());
-            //sqlReader.Close();
-            // MessageBox.Show(id_department.ToString());
-
-
-
-
+            
             return fn_department;
         }
 
         void FillingComboTeachers(string id_department)
         {
-            //SqlCommand commandSelect = new SqlCommand($"SELECT [name_department] FROM [departments] ORDER BY [name_department]", Program.sqlConnection);
             SqlCommand commandSelect = new SqlCommand($"SELECT [name_teachers] FROM [teachers] WHERE [id_department] = N'{id_department}' ORDER BY [name_teachers]", Program.sqlConnection);
             commandSelect.Parameters.AddWithValue("id_department", id_department);
             SqlDataReader sqlReader = null;
@@ -127,6 +104,7 @@ namespace project1_Parser
                 comboBox1.Enabled = true;
                 comboBox1.Visible = true;
             }
+            comboBox1.Items.Clear();
             Program.Connect();
             await Program.sqlConnection.OpenAsync();
             ComboInstitutes();
@@ -153,17 +131,6 @@ namespace project1_Parser
             document.InsertParagraph("«" + comboBox1.Text + "»").Font("Times New Roman").FontSize(14).Alignment = Xceed.Document.NET.Alignment.center;
 
             document.Save();
-
-            try
-            {
-                //document.InsertParagraph("Дата и время: ").Font("Times New Roman").FontSize(14).Append(dateTimePicker1.Text + ", " + textBox2.Text).Bold().Font("Times New Roman").FontSize(14).Alignment = Xceed.Document.NET.Alignment.left;
-                //document.Save();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
         }
 
 
@@ -200,7 +167,16 @@ namespace project1_Parser
 
         private void DocxTableCreator(object sender, EventArgs e)
         {
-            DocX document = DocX.Load(documentPut);
+            DocX document = null;
+            if (documentPut.Contains(".docx"))
+            {
+                document = DocX.Load(documentPut);
+            }
+            else
+            {
+                document = DocX.Load(documentPut + ".docx");
+            }
+            
             Table table = document.InsertTable(docxTableStudent.Count + 1, 3);
             table.Alignment = Alignment.left;
             table.Rows[0].Cells[0].RemoveParagraphAt(0);
@@ -262,8 +238,6 @@ namespace project1_Parser
 
                 ttemp = 0;
 
-                
-
                 for (int row = 1; row < docxTableStudent.Count + 1; row++)
                 {
                     table.Rows[row].Cells[0].RemoveParagraphAt(0);
@@ -278,8 +252,6 @@ namespace project1_Parser
                     cell_paragraph = table.Rows[row].Cells[2].InsertParagraph(docxTableLesson[row - 1]).FontSize(12);
                     cell_paragraph.Alignment = Alignment.center;
                 }
-
-                
 
                 int r = 0;
 
@@ -300,8 +272,6 @@ namespace project1_Parser
                         row = r - 1;
                     }
                 }
-
-                
             }
             else
             {
@@ -320,9 +290,6 @@ namespace project1_Parser
                     cell_paragraph.Alignment = Alignment.center;
                 }
             }
-
-
-
 
             table.SetColumnWidth(0, 70);
             table.SetColumnWidth(1, 200);
@@ -361,7 +328,15 @@ namespace project1_Parser
 
             checkedListBox1.Items.Clear();
 
-            DocX document = DocX.Load(documentPut);
+            DocX document = null;
+            if (documentPut.Contains(".docx"))
+            {
+                document = DocX.Load(documentPut);
+            }
+            else
+            {
+                document = DocX.Load(documentPut + ".docx");
+            }
             document.InsertParagraph("").Font("Times New Roman").FontSize(14).Alignment = Xceed.Document.NET.Alignment.left;
             document.InsertParagraph(comboBox2.Text + ": " + teachers + ".").Font("Times New Roman").FontSize(14).Alignment = Xceed.Document.NET.Alignment.left;
             document.InsertParagraph("Дата и время: ").Font("Times New Roman").FontSize(14).Append(dateTimePicker1.Text + ", " + textBox2.Text).Bold().Font("Times New Roman").FontSize(14).Alignment = Xceed.Document.NET.Alignment.left;
@@ -439,18 +414,6 @@ namespace project1_Parser
         {
             vremyaPeresdachi.Add(dateTimePicker1.Value);
             auditoriyaPeresdachi.Add(textBox2.Text);
-            /*for (int i = vremyaPeresdachi.Count - 1; i >= 0; i--)
-            {
-                for (int j = vremyaPeresdachi.Count - 1; j >= 0; j--)
-                {
-                    if ((i != j) && (vremyaPeresdachi[i] == vremyaPeresdachi[j]) && (auditoriyaPeresdachi[i] == auditoriyaPeresdachi[j]))
-                    {
-                        MessageBox.Show("Данная дата и время [" + vremyaPeresdachi[i] + "]\nуже заняты в аудитории " + auditoriyaPeresdachi[i] + ".", "Ошибка");
-
-                        return;
-                    }
-                }
-            }*/
             teachers_docx();
             Program.Connect();
             await Program.sqlConnection.OpenAsync();
@@ -515,6 +478,7 @@ namespace project1_Parser
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            checkedListBox2.Items.Clear();
             string full_name_department = comboBox1.Text;
 
             Program.sqlConnection.Open();
